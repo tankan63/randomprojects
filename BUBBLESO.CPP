@@ -1,4 +1,4 @@
-#include<iostream.h>
+#include<iostream.h> //bubble sort algorithm
 #include<stdio.h>
 class List {
 public:
