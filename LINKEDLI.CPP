@@ -1,10 +1,12 @@
-#include<iostream.h>
-#include<string.h>
+#include<iostream>
+#include<string>
+using namespace std;
+
 struct Node {
  string name;
  Node *NEXT;
- Node (const string &s, Node * n = NULL): name (s), NEXT (n);
- }
+ Node (const string &s, Node * n = NULL): name (s), NEXT (n) {}
+ };
 class List {
  private:
  Node *START,
@@ -21,7 +23,7 @@ List::List() {
  }
 void List::addnode(const string &s) {
  if (START==NULL || s<=START->name) {
-  START= new Node(n, START);
+  START= new Node(s, START);
   return;
  }
  Node *prev, *curr;
@@ -52,7 +54,7 @@ int main () {
 	 string s;
 	 cin.ignore();
 	 getline(cin, s);
-	 obj.addnode();
+	 obj.addnode(s);
 	}
 	break;
    case '2':
@@ -68,9 +70,3 @@ int main () {
   }
  return 0;
 }
-
-
-
-
-
-
