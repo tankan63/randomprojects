@@ -39,7 +39,7 @@ int main() {
   obj.display();
   }
  catch(char *message){
-  cout<,"exception: "<<message<<endl;
+  cout<<"exception: "<<message<<endl;
   }
  return 0;
 }
