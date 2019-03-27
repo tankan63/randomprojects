@@ -1,5 +1,5 @@
-#include<iostream.h>
-#include<cstream.h>
+#include<iostream>
+#include<string>
 class String {
  private:
  char *str;
