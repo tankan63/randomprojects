@@ -1,4 +1,4 @@
-package userpasscheck;
+package activity;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -13,16 +13,17 @@ class NoMatchException extends RuntimeException {
     }
 }
 
-public class UserPassCheck extends JFrame {
+public class UserPassCheck extends JFrame implements ActionListener{
     
     JButton check;
     JPanel panel;
     JLabel user, pass;
-    JTextField usert, passt;
+    JTextField usert, passt, message;
     
     UserPassCheck() {
         check=new JButton("Check!");
-        check.setBounds(40, 280, 50, 20);
+        check.setBounds(40, 180, 90, 20);
+        check.addActionListener(this);
         user=new JLabel("User Name");
         user.setBounds(60,20,80,20);
         usert=new JTextField();
@@ -33,7 +34,9 @@ public class UserPassCheck extends JFrame {
         passt.setBounds(150,40,80,20);
         panel=new JPanel();
         panel.setBounds(0, 0, 390, 390);
-        panel.setBackground(Color.red);
+        panel.setBackground(Color.orange);
+        message=new JTextField();
+        message.setBounds(60, 230, 200, 20);
         
         add(check);
         add(user);
@@ -41,29 +44,36 @@ public class UserPassCheck extends JFrame {
         add(pass);
         add(passt);
         add(panel);
+        add(message);
         
         setTitle("Testing");
+        setLayout(null);
         setVisible(true);
         setSize(400, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);   
     }
-    public void HeightCheck ()
-    {
-        if () {
-            try {
-                throw new NoMatchException();
+    
+    public void actionPerformed(ActionEvent e) {
+        String User=usert.getText();
+        String Pass=passt.getText();
+        if(e.getSource()==check) {
+            if(User.equals(Pass)==false) {
+                try {
+                    throw new NoMatchException();
+                }
+                catch(NoMatchException m) {
+                    message.setText("Does not match!");
+                }
             }
-            catch (NoMatchException m) {
-                System.out.println("Sorry. You're a manlet. You can't be in the team!");
+            else {
+                message.setText("Matches.");
             }
         }
-        else {
-            System.out.println("Success");
-        }
+        
+    }
+    
     public static void main(String[] args) 
         {
        UserPassCheck d=new UserPassCheck();
         }
     }
-    
-}
